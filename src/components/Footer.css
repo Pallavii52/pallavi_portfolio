@@ -1,0 +1,33 @@
+.footer {
+  position: relative;
+  z-index: 2;
+  padding: 28px 5%;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text3);
+  font-size: 0.82rem;
+  background: var(--bg);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-left span { color: var(--pink); font-weight: 600; }
+
+.footer-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1rem;
+  color: var(--text2);
+}
+.footer-logo span {
+  background: linear-gradient(135deg, var(--pink-light), var(--purple-mid));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 600px) {
+  .footer { justify-content: center; text-align: center; }
+  .footer-center { display: none; }
+}

@@ -1,0 +1,36 @@
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.17;
+  animation: orb-drift 14s ease-in-out infinite alternate;
+}
+
+.orb1 {
+  width: 650px; height: 650px;
+  background: var(--purple);
+  top: -180px; left: -120px;
+  animation-delay: 0s;
+}
+.orb2 {
+  width: 520px; height: 520px;
+  background: var(--pink);
+  top: 30%; right: -160px;
+  animation-delay: -5s;
+}
+.orb3 {
+  width: 420px; height: 420px;
+  background: #1d4ed8;
+  bottom: 8%; left: 18%;
+  animation-delay: -9s;
+}
+
+[data-theme='light'] .orb { opacity: 0.08; }

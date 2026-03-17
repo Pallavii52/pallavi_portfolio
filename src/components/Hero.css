@@ -1,0 +1,266 @@
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Badge */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 7px 16px;
+  border-radius: 30px;
+  font-size: 0.82rem;
+  color: var(--text2);
+  margin-bottom: 24px;
+}
+.hero-badge strong { color: var(--pink-light); }
+.badge-dot {
+  width: 8px; height: 8px;
+  background: var(--pink);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+  flex-shrink: 0;
+}
+
+/* Heading */
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.06;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.grad {
+  background: linear-gradient(130deg, var(--pink-light) 0%, var(--purple-mid) 55%, var(--pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: block;
+}
+
+/* Sub */
+.hero-sub {
+  color: var(--text2);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  margin-bottom: 36px;
+  max-width: 440px;
+}
+
+/* CTA */
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 44px;
+}
+
+/* Stats */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.stat { display: flex; flex-direction: column; }
+.stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+}
+.stat-plus { color: var(--pink); }
+.stat-label {
+  font-size: 0.76rem;
+  color: var(--text3);
+  margin-top: 4px;
+}
+.stat-divider {
+  width: 1px; height: 40px;
+  background: var(--border);
+}
+
+/* Avatar card */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.avatar-card {
+  width: 360px;           /* was 300px — increase this to make it wider */
+  background: linear-gradient(150deg, var(--surface2), var(--surface));
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 48px 36px;     /* was 36px 28px — increase for more inner space */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;              /* was 12px — more gap between items */
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 80px var(--shadow);
+}
+.avatar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+}
+
+/* ── Avatar image wrapper ── */
+.avatar-img-wrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin-bottom: 4px;
+}
+
+/* Spinning gradient ring */
+.avatar-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: conic-gradient(var(--pink), var(--purple), var(--pink-light), var(--pink));
+  animation: spin-ring 3s linear infinite;
+  z-index: 0;
+}
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+
+/* Actual photo */
+.avatar-photo {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--surface);
+  display: block;
+}
+
+/* Fallback initials (shown when no image) */
+.avatar-initials {
+  position: relative;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #fff;
+  border: 3px solid var(--surface);
+}
+
+/* Green online dot */
+.avatar-online-dot {
+  position: absolute;
+  bottom: 6px;
+  right: 4px;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  background: #22c55e;
+  border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 8px rgba(34,197,94,0.6);
+}
+
+/* Thin divider line */
+.avatar-divider {
+  width: 60%;
+  height: 1px;
+  background: var(--border);
+  margin: 2px 0;
+}
+
+/* Hint text when no image */
+.avatar-hint {
+  font-size: 0.72rem;
+  color: var(--text3);
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+.avatar-hint code {
+  color: var(--pink-light);
+  font-size: 0.68rem;
+}
+
+.avatar-name {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--text);
+}
+.avatar-role {
+  font-size: 0.9rem;
+  color: var(--pink-light);
+  margin-top: -6px;
+}
+.avatar-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 6px;
+}
+
+/* Floating badges */
+.floating-badge {
+  position: absolute;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 16px;
+  font-size: 0.76rem;
+  color: var(--text2);
+  font-weight: 500;
+  box-shadow: 0 8px 30px var(--shadow);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.fb1 { top: 10px; right: -20px; animation: float1 3.5s ease-in-out infinite; }
+.fb2 { bottom: 30px; left: -30px; animation: float2 4s ease-in-out infinite; }
+.fb-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+}
+
+@media (max-width: 860px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
+  .hero-right {
+    order: -1;
+    margin-bottom: 20px;
+  }
+  .fb1 { right: 10px; }
+  .fb2 { left: 10px; }
+}
