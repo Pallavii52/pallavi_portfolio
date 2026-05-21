@@ -23,7 +23,7 @@ const projects = [
     icon: '🎓',
     title: 'Placement Eligibility System',
     type: ' Console Based Application',
-    desc: 'A console-based application that checks whether a student is eligible for campus placement based on criteria like percentage and backlogs. It collects student data, applies eligibility rules, and displays the result.',
+    desc: 'A console-based application that checks whether a student is eligible for campus placement based on criteria like percentage and backlogs. It collects student data, applies eligibility rule[...]
     stack: ['Java','JDBC'],
     link: '#',
   },
@@ -40,7 +40,6 @@ function ProjectCard({ proj, index }) {
       <div className="proj-stack">
         {proj.stack.map((s) => <span key={s}>{s}</span>)}
       </div>
-      <a href={proj.link} className="proj-link">View Project →</a>
     </div>
   );
 }
