@@ -4,27 +4,27 @@ import './Projects.css';
 
 const projects = [
   {
-    icon: '🏛️',
-    title: 'Public Service Request Tracking System',
-    type: 'Web Application',
-    desc: 'A citizen-facing platform for public service issue tracking with admin-side request management and real-time status updates for government services.',
-    stack: ['Java', 'JDBC', 'MySQL', 'HTML/CSS'],
+    icon: '🔍',
+    title: 'InstiFind - IT Training Institute Discovery Platform',
+    type: 'Full-Stack Web Application',
+    desc: 'A centralized web platform enabling students to search, filter, and compare IT training institutes based on courses, fees, location, and placement records. Built RESTful APIs using Spring Boot with Hibernate/JPA to manage institute listings, course catalogs, and student enquiry data backed by a PostgreSQL database. Developed an admin module for managing institute records, student enquiries, and counsellor assignments, plus lead-tracking and analytics for source-wise and course-wise demand.',
+    stack: ['Java', 'Spring Boot', 'Hibernate', 'JPA', 'PostgreSQL', 'React.js'],
     link: '#',
   },
   {
-    icon: '✅',
-    title: 'Digital Approval Workflow System',
-    type: 'Web Application',
-    desc: 'A role-based approval workflow system that automates request submission, multi-level approval routing, and real-time tracking for organizational processes.',
-    stack: ['Java', 'JDBC', 'MySQL', 'Springboot'],
+    icon: '✉️',
+    title: 'AUTOREPLY - Automated Email Reply Generator',
+    type: 'Full-Stack Web Application',
+    desc: 'Architected a backend system using Spring Boot that exposes REST APIs to receive email content and return AI-generated reply suggestions. Built a responsive React.js frontend allowing users to input email content, view generated replies, and copy responses with a single click. Integrated a third-party AI service API for real-time replies, with error handling, input validation, and thorough Postman-based API testing.',
+    stack: ['Java', 'Spring Boot', 'React.js', 'REST APIs', 'External AI Service'],
     link: '#',
   },
   {
-    icon: '🎓',
-    title: 'Placement Eligibility System',
-    type: ' Console Based Application',
-    desc: 'A console-based application that checks whether a student is eligible for campus placement based on criteria like percentage and backlogs. It collects student data, applies eligibility rule[...]
-    stack: ['Java','JDBC'],
+    icon: '🧪',
+    title: 'Ingredient Recognizer - AI-Powered Food Label Scanner',
+    type: 'AI-Powered Web Application',
+    desc: 'An AI-powered web application that extracts ingredient names from food label images using OCR technology and displays the detected ingredients in an easy-to-read format. Built a Spring Boot backend with OCR integration for image processing and text extraction, with a React.js frontend for image upload and result visualization. Implemented intelligent parsing to identify and categorize ingredients, with support for multiple food label formats and real-time processing.',
+    stack: ['Java', 'Spring Boot', 'React.js', 'OCR', 'AI/ML', 'REST APIs'],
     link: '#',
   },
 ];

@@ -42,8 +42,8 @@ export default function Navbar() {
         </button>
         <a
           className="btn-resume"
-          href="/RESUME.pdf"
-          download="Pallavi_Jadhav_Resume.pdf"
+          href="/Jadhav_Pallavi_Resume_Java.pdf"
+          download="Jadhav_Pallavi_Resume_Java.pdf"
         >
           ⬇ Resume
         </a>

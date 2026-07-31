@@ -3,33 +3,66 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Contact.css';
 
 const contactLinks = [
-  { icon: '✉️', label: 'pallavijadhav5204@email.com',       href: 'mailto:pallavijadhav@email.com' },
-  { icon: '📞', label: '+91-9284459267',                 href: 'tel:+919284459267' },
+  { icon: '✉️', label: 'pallavijadhav5204@gmail.com', href: 'mailto:pallavijadhav5204@gmail.com' },
+  { icon: '📞', label: '+91-9284459267', href: 'tel:+919284459267' },
   { icon: '💼', label: 'linkedin.com/in/pallavijadhav52', href: 'https://linkedin.com/in/pallavijadhav52' },
-  { icon: '🐙', label: 'github.com/Pallavii52',           href: 'https://github.com/Pallavii52' },
-  { icon: '📍', label: 'Pune, Maharashtra, India',        href: '#' },
+  { icon: '🐙', label: 'github.com/Pallavii52', href: 'https://github.com/Pallavii52' },
+  { icon: '📍', label: 'Pune, Maharashtra, India', href: '#' },
 ];
 
 export default function Contact() {
-  const leftRef  = useScrollReveal(0);
+  const leftRef = useScrollReveal(0);
   const rightRef = useScrollReveal(150);
 
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
   const [status, setStatus] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { name, email, subject, message } = form;
+    
+    // Validate form
     if (!name || !email || !subject || !message) {
       setStatus('error');
+      setTimeout(() => setStatus(''), 3000);
       return;
     }
-    const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
-    const mailto = `mailto:pallavijadhav5204@email.com?subject=${encodeURIComponent(subject + ' — from ' + name)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-    setStatus('success');
+
+    setIsSubmitting(true);
+    setStatus('sending');
+
+    try {
+     
+      const response = await fetch('https://formspree.io/f/maqrzprk', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+        }),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setForm({ name: '', email: '', subject: '', message: '' });
+        setTimeout(() => setStatus(''), 5000);
+      } else {
+        setStatus('error');
+        setTimeout(() => setStatus(''), 4000);
+      }
+    } catch (error) {
+      setStatus('error');
+      setTimeout(() => setStatus(''), 4000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -47,7 +80,13 @@ export default function Contact() {
             </p>
             <div className="contact-links">
               {contactLinks.map((l) => (
-                <a key={l.label} href={l.href} className="c-link" target={l.href.startsWith('http') ? '_blank' : '_self'} rel="noreferrer">
+                <a 
+                  key={l.label} 
+                  href={l.href} 
+                  className="c-link" 
+                  target={l.href.startsWith('http') ? '_blank' : '_self'} 
+                  rel="noreferrer"
+                >
                   <div className="c-icon">{l.icon}</div>
                   <span>{l.label}</span>
                 </a>
@@ -61,17 +100,27 @@ export default function Contact() {
               <div className="form-group">
                 <label htmlFor="name">Your Name</label>
                 <input
-                  id="name" name="name" type="text"
+                  id="name" 
+                  name="name" 
+                  type="text"
                   placeholder="John Doe"
-                  value={form.name} onChange={handleChange}
+                  value={form.name} 
+                  onChange={handleChange}
+                  required
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="email">Your Email</label>
                 <input
-                  id="email" name="email" type="email"
+                  id="email" 
+                  name="email" 
+                  type="email"
                   placeholder="john@company.com"
-                  value={form.email} onChange={handleChange}
+                  value={form.email} 
+                  onChange={handleChange}
+                  required
+                  disabled={isSubmitting}
                 />
               </div>
             </div>
@@ -79,30 +128,43 @@ export default function Contact() {
             <div className="form-group">
               <label htmlFor="subject">Subject</label>
               <input
-                id="subject" name="subject" type="text"
+                id="subject" 
+                name="subject" 
+                type="text"
                 placeholder="Job Opportunity — Full Stack Developer"
-                value={form.subject} onChange={handleChange}
+                value={form.subject} 
+                onChange={handleChange}
+                required
+                disabled={isSubmitting}
               />
             </div>
 
             <div className="form-group">
               <label htmlFor="message">Message</label>
               <textarea
-                id="message" name="message" rows="5"
+                id="message" 
+                name="message" 
+                rows="5"
                 placeholder="Hi Pallavi, I'd love to discuss..."
-                value={form.message} onChange={handleChange}
+                value={form.message} 
+                onChange={handleChange}
+                required
+                disabled={isSubmitting}
               />
             </div>
 
-            <button type="submit" className="btn-send">
-              Send Message ✉️
+            <button type="submit" className="btn-send" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message ✉️'}
             </button>
 
+            {status === 'sending' && (
+              <p className="form-msg sending">⏳ Sending your message...</p>
+            )}
             {status === 'error' && (
-              <p className="form-msg error">⚠ Please fill in all fields.</p>
+              <p className="form-msg error">⚠ Failed to send. Please try again or email me directly.</p>
             )}
             {status === 'success' && (
-              <p className="form-msg success">✓ Opening your email client…</p>
+              <p className="form-msg success">✓ Message sent successfully! I'll get back to you soon.</p>
             )}
           </form>
         </div>

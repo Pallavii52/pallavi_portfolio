@@ -65,7 +65,7 @@ export default function Hero() {
             </div>
             <div className="stat-divider" />
             <div className="stat">
-              <span className="stat-num">8.09</span>
+              <span className="stat-num">8.49</span>
               <span className="stat-label">CGPA</span>
             </div>
             <div className="stat-divider" />

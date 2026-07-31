@@ -7,7 +7,7 @@ const eduData = [
     period: '2022 – 2025',
     degree: 'Bachelor of Computer Science (BSc CS)',
     school: 'Modern College of Arts, Science and Commerce, Pune',
-    badge: 'CGPA — 8.09',
+    badge: 'CGPA — 8.49',
   },
   {
     period: '2020 – 2021',
